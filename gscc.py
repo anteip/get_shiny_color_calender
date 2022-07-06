@@ -34,11 +34,14 @@ def save_image(url):
 #画像URLを取得
 def get_image():
     result_url = []
-    for tweet in tweepy.Cursor(api.user_timeline, id="imassc_official").items(20):
+    for tweet in tweepy.Cursor(api.user_timeline, id="imassc_official").items(500):
         if (list(tweet.text)[:2]!=['R', 'T']) & (list(tweet.text)[0]!='@'):
             if "#シャニマスカレンダー" in tweet.text:
                 for media in tweet.extended_entities['media']:
                     result_url.append(media['media_url'])
+                else:
+                    continue
+                break
     return result_url
 
 def start():
