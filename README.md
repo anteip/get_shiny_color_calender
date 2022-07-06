@@ -1,0 +1,2 @@
+# get_shiny_color_calender
+Twitterからシャニマスカレンダーを取得し、自動で壁紙に設定します
