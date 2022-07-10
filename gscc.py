@@ -26,7 +26,7 @@ def save_image(url):
         image_url = image_url + ":orig"
         date = datetime.date.today()
         file_path = dir + date.strftime('%Y-%m') + "-01_imassc_calender_" + str(count) + ".jpeg"
-        data = urllib.request.urlopen(image_url).read()
+        data = urllib.request.urlopen(image_url, timeout=20).read()
         with open(file_path, mode="wb") as f:
             f.write(data)
         count += 1
@@ -39,8 +39,6 @@ def get_image():
             if "#シャニマスカレンダー" in tweet.text:
                 for media in tweet.extended_entities['media']:
                     result_url.append(media['media_url'])
-                else:
-                    continue
                 break
     return result_url
 
